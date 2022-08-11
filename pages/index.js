@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import ItemList from '../components/itemList/ItemList'
 import ModalCreateItem from '../components/modalCreateItem/ModalCreateItem'
 import getSitesServices from '../services/getSitesServices'
@@ -13,21 +13,24 @@ export default function Home() {
     }, [])
 
     return (
-        <div >
-            <Head>
-                <title>A3media</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <ModalCreateItem/>
-            <div className={styles.containerListItem}>
-                <div className={styles.listItem}>
-                    {sites?.map(item => {
-                        return (
-                            <ItemList key={item._id} item={item} />
-                        )
-                    })}
+        <Suspense fallback={<div>cargando</div>}>
+            <div >
+                <Head>
+                    <title>A3media</title>
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
+                <ModalCreateItem />
+                <div className={styles.containerListItem}>
+                    <div className={styles.listItem}>
+                        {sites?.map(item => {
+                            return (
+                                <ItemList key={item._id} item={item} />
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Suspense>
+
     )
 }
