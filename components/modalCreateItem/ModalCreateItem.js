@@ -9,40 +9,26 @@ import FromSite from '../formSite/FormSite';
 export default function ModalCreateItem(props) {
 
     const [show, setShow] = useState(false);
-    const [item, setItem] = useState({});
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const textView = (props?.item?._id) ? "Editar" : "Nuevo"
 
-    useEffect(() => {
-        if (props?.item) {
-            setItem(props?.item)
-        }
 
-    }, [props?.item])
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Nuevo
+            <Button className={props?.stylesBtn} variant="primary" onClick={handleShow}>
+                {textView}
             </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Nuevo </Modal.Title>
+                    <Modal.Title>{textView} </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-
-                    <FromSite item={item}></FromSite>
+                    <FromSite item={props?.item} returnOK={handleClose}/>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </>
     );
