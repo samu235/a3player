@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FromSite from '../formSite/FormSite';
+import Button from '../button/Button';
 
 
 export default function ModalCreateItem(props) {
@@ -14,11 +13,9 @@ export default function ModalCreateItem(props) {
     const handleShow = () => setShow(true);
     const textView = (props?.item?._id) ? "Editar" : "Nuevo"
 
-
-
     return (
         <>
-            <Button className={props?.stylesBtn} variant="primary" onClick={handleShow}>
+            <Button className={props?.stylesBtn}  onClick={handleShow}>
                 {textView}
             </Button>
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ModifySiteService from '../../services/ModifySiteService';
 import newSiteService from '../../services/newSiteService';
+import Button from '../button/Button';
 
 export default function FromSite(props) {
     const [msnError,setMsnError] = useState("")
@@ -89,7 +90,7 @@ export default function FromSite(props) {
                     {msnError}
                 </div>
                 <div>
-                    <button type='submit'>Guardar</button>
+                    <Button type='submit'>Guardar</Button>
                 </div>
             </form>
         </>

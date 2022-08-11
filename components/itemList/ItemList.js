@@ -1,3 +1,4 @@
+import Button from '../button/Button'
 import ModalCreateItem from '../modalCreateItem/ModalCreateItem'
 import styles from './ItemList.module.css'
 export default function ItemList(props){
@@ -9,8 +10,9 @@ export default function ItemList(props){
     return(
         <div className={styles.container}>
             <div className={styles.name}>{props?.item?.name}</div>
-            <ModalCreateItem stylesBtn={styles.btn} item={props?.item}/>
-            <button className={styles.btn}>eliminar</button>
+            <ModalCreateItem item={props?.item}/>
+            <Button>Eliminar</Button>
+            
         </div>
     )
 }
