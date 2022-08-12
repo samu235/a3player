@@ -19,7 +19,6 @@ export default async function ModifySiteService(id,path,description,publicPath,k
             headers: {
                 'Content-Type': 'application/json'
             },
-            
         })
     } catch (error) {
         console.log("ModifySiteService -- " + error)

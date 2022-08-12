@@ -2,9 +2,12 @@ import { useState } from 'react';
 import ModifySiteService from '../../services/ModifySiteService';
 import newSiteService from '../../services/newSiteService';
 import Button from '../button/Button';
+import { useDispatch } from 'react-redux'
+import { addOneSite, modifyOneSite } from '../../reducers/sitesReducer';
 
 export default function FromSite(props) {
     const [msnError,setMsnError] = useState("")
+    const dispatch = useDispatch(state => state.sitesStore)
 
     function returnOk(){
         console.log("TODO OK")
@@ -27,32 +30,32 @@ export default function FromSite(props) {
                 event.target.elements.key.value,
                 event.target.elements.name.value,
             ).then(data => {
-                console.log(data)
                 if (data?.error) {
                     console.log("error -- ", data?.error)
                     setMsnError(data?.error)
                 }else{
+                    dispatch(modifyOneSite(data))
                     returnOk()
                 }
 
             }).catch(e => {
                 console.log("error --", e)
-                setMsnError(data?.error)
+                setMsnError(e)
             })
         } else {
             const fromdata = new FormData(form)
             const payload = new URLSearchParams(fromdata)
             newSiteService(payload).then(data => {
-                console.log(data)
                 if (data?.error) {
                     console.log("error -- ", data?.error)
                     setMsnError(data?.error)
                 }else{
+                    dispatch(addOneSite(data))
                     returnOk()
                 }
             }).catch(e => {
                 console.log("error --", e)
-                setMsnError(data?.error)
+                setMsnError(e)
             })
         }
 

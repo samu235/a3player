@@ -1,20 +1,25 @@
 import Head from 'next/head'
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useEffect } from 'react'
 import ItemList from '../components/itemList/ItemList'
 import ModalCreateItem from '../components/modalCreateItem/ModalCreateItem'
 import getSitesServices from '../services/getSitesServices'
+import { useSelector, useDispatch } from 'react-redux'
 import styles from '../styles/Home.module.css'
+import { setSitesAll } from '../reducers/sitesReducer'
 
 export default function Home() {
-    const [sites, setSites] = useState([])
+    const dispatch = useDispatch()
+    const sites = useSelector(state => state.sitesStore)
 
     useEffect(() => {
-        getSitesServices().then(data => setSites(data))
-    }, [])
+        if (dispatch) {
+            getSitesServices().then(data => dispatch(setSitesAll(data)))
+        }
+    }, [dispatch])
 
     return (
         <Suspense fallback={<div>cargando</div>}>
-            <div >
+            <div>
                 <Head>
                     <title>A3media</title>
                     <link rel="icon" href="/favicon.ico" />
@@ -22,7 +27,7 @@ export default function Home() {
                 <ModalCreateItem />
                 <div className={styles.containerListItem}>
                     <div className={styles.listItem}>
-                        {sites?.map(item => {
+                        {sites.sites?.map(item => {
                             return (
                                 <ItemList key={item._id} item={item} />
                             )

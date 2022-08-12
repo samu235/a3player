@@ -3,13 +3,15 @@ import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from '../button/Button';
 import DeleteSiteService from '../../services/DeleteSiteService';
-
+import { useDispatch } from 'react-redux'
+import { deleteOneSite } from '../../reducers/sitesReducer';
 
 export default function ModalDeleteItem(props) {
     const [show, setShow] = useState(false);
     const [msnError, setMsnError] = useState("");
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const dispatch = useDispatch(state => state.sitesStore)
 
     function returnOk(){
         handleClose()
@@ -17,8 +19,8 @@ export default function ModalDeleteItem(props) {
 
     function deleteItem(){
         DeleteSiteService(props?.item?._id).then(data => {
-            console.log(data)
             if(data.deletedCount){
+                dispatch(deleteOneSite(props?.item?._id))
                 returnOk()
             }else if(data.error){
                 setMsnError(data.error)
