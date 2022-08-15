@@ -2,8 +2,11 @@
     display: flex;
     align-content: space-between;
     width: 100%;
+    border-radius: 2rem;
 }
-
+.container:hover{
+    background-color: rgb(150, 245, 245);
+}
 .name{
     width: 100%;
     margin: 1rem;

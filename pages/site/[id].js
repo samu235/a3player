@@ -17,7 +17,9 @@ export default function Menu() {
 
     return (
         <div className={styles.container}>
-            <div><h2>Site:{site.name}</h2></div>
+            <div className={styles.title}>
+                <h2>{site.name}</h2>
+            </div>
             <div className={styles.row}>
                 <div className={styles.name}>Name: </div>
                 <div className={styles.text}>{site.name}</div>

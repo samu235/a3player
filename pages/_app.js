@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from 'react-redux'
-import '../styles/globals.css'
+import './globals.css'
 import { sitesReducer } from '../reducers/sitesReducer';
 
 

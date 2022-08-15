@@ -4,7 +4,7 @@ import ItemList from '../components/itemList/ItemList'
 import ModalCreateItem from '../components/modalCreateItem/ModalCreateItem'
 import getSitesServices from '../services/getSitesServices'
 import { useSelector, useDispatch } from 'react-redux'
-import styles from '../styles/Home.module.css'
+import styles from './Home.module.css'
 import { setSitesAll } from '../reducers/sitesReducer'
 
 export default function Home() {

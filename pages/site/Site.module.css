@@ -18,3 +18,8 @@
     width: 50%;
     margin-left: 0.2rem;
 }
+.title{
+    text-align: center;
+    width: 100%;
+    color:  rgb(0, 132, 255);
+}
