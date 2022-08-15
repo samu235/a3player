@@ -7,11 +7,9 @@ export const sitesReducer = (state = sites, action) => {
         }
     } else if (action.type === '@sites/addOneSite') {
         let newSite = action.payload.site
-        let newSites = state.sites
-        newSites.push(newSite)
         state = {
             ...state,
-            sites: newSites
+            sites: [...state.sites,newSite]
         }
     } else if (action.type === '@sites/modifyOneSite') {
         let newSite = action.payload.site

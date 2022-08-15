@@ -15,7 +15,7 @@ export default function ItemList(props) {
             <ModalDeleteItem item={props?.item} />
             <Link href={"/site/" + props?.item?._id}>
                 <a className={styles.aDefault}>
-                    <Button cancelEventPrevent>Detalle</Button>
+                    <Button >Detalle</Button>
                 </a>
             </Link>
         </div >

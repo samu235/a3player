@@ -118,7 +118,7 @@ export default function FromSite(props) {
                     {msnError}
                 </div>
                 <div>
-                    <Button type='submit'>Guardar</Button>
+                    <Button  type='submit'>Guardar</Button>
                 </div>
             </form>
         </>
