@@ -4,12 +4,13 @@ import newSiteService from '../../services/newSiteService';
 import Button from '../button/Button';
 import { useDispatch } from 'react-redux'
 import { addOneSite, modifyOneSite } from '../../reducers/sitesReducer';
+import styles from './FormSite.module.css'
 
 export default function FromSite(props) {
-    const [msnError,setMsnError] = useState("")
+    const [msnError, setMsnError] = useState("")
     const dispatch = useDispatch(state => state.sitesStore)
 
-    function returnOk(){
+    function returnOk() {
         console.log("TODO OK")
         setMsnError("")
         props?.returnOK()
@@ -33,7 +34,7 @@ export default function FromSite(props) {
                 if (data?.error) {
                     console.log("error -- ", data?.error)
                     setMsnError(data?.error)
-                }else{
+                } else {
                     dispatch(modifyOneSite(data))
                     returnOk()
                 }
@@ -49,7 +50,7 @@ export default function FromSite(props) {
                 if (data?.error) {
                     console.log("error -- ", data?.error)
                     setMsnError(data?.error)
-                }else{
+                } else {
                     dispatch(addOneSite(data))
                     returnOk()
                 }
@@ -65,29 +66,53 @@ export default function FromSite(props) {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="name">name:</label>
-                    <input type='text' name="name" defaultValue={props?.item?.name} required></input>
+                <div className={styles.row}>
+                    <div className={styles.name}>
+                        <label htmlFor="name">name:</label>
+                    </div>
+                    <div className={styles.text}>
+                        <input type='text' name="name" defaultValue={props?.item?.name} required></input>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="path">path:</label>
-                    <input type='text' name="path" defaultValue={props?.item?.path} required></input>
+                <div  className={styles.row}>
+                    <div className={styles.name}>
+                        <label htmlFor="path">path:</label>
+                    </div>
+                    <div className={styles.text}>
+                        <input type='text' name="path" defaultValue={props?.item?.path} required></input>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="publicPath">publicPath:</label>
-                    <input type='text' name="publicPath" defaultValue={props?.item?.publicPath} required></input>
+                <div  className={styles.row}>
+                    <div className={styles.name}>
+                        <label htmlFor="publicPath">publicPath:</label>
+                    </div>
+                    <div className={styles.text}>
+                        <input type='text' name="publicPath" defaultValue={props?.item?.publicPath} required></input>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="key">key:</label>
-                    <input type='text' name="key" defaultValue={props?.item?.key} required></input>
+                <div  className={styles.row}>
+                    <div className={styles.name}>
+                        <label htmlFor="key">key:</label>
+                    </div>
+                    <div className={styles.text}>
+                        <input type='text' name="key" defaultValue={props?.item?.key} required></input>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="description">description:</label>
-                    <input type='text' name="description" defaultValue={props?.item?.description} required></input>
+                <div  className={styles.row}>
+                    <div className={styles.name}>
+                        <label htmlFor="description">description:</label>
+                    </div>
+                    <div className={styles.text}>
+                        <input type='text' name="description" defaultValue={props?.item?.description} required></input>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="site">site:</label>
-                    <input type='text' name="site" defaultValue={props?.item?.site} required></input>
+                <div  className={styles.row}>
+                    <div className={styles.name}>
+                        <label htmlFor="site">site:</label>
+                    </div>
+                    <div className={styles.text}>
+                        <input type='text' name="site" defaultValue={props?.item?.site} required></input>
+                    </div>
                 </div>
                 <div>
                     {msnError}
