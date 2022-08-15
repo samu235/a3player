@@ -11,7 +11,6 @@ export default function FromSite(props) {
     const dispatch = useDispatch(state => state.sitesStore)
 
     function returnOk() {
-        console.log("TODO OK")
         setMsnError("")
         props?.returnOK()
 

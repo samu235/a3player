@@ -10,7 +10,6 @@ export default function Menu() {
 
     useEffect(() => {
         if (id) {
-            console.log(id)
             getOneSiteServices(id).then(data => setSite(data))
         }
     }, [id])
