@@ -30,6 +30,8 @@ describe('Site app', () => {
     cy.contains("PublicPath").parent().contains(publicPath)
     cy.contains("Key:").parent().contains(key)
     cy.contains("Description:").parent().contains(description)
+    cy.contains("Inicio").click()
+    cy.url().should('eq', 'http://localhost:3000/')
   })
   it('Modify new site',()=>{
     cy.contains(name).parent().contains('Editar').click()
