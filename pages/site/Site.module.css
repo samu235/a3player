@@ -1,21 +1,40 @@
 .container {
     display: flex;
+    justify-content: center;
+    margin: 2rem;
+    
+    
+}
+.containerChildren {
+    display: flex;
     flex-direction: column;
+    max-width: 500px;
+    border: 5px;
+    border-style: solid;
+    border-color: rgb(0, 132, 255);
+    border-radius: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    
 }
 
 .row {
     display: flex;
     flex-direction: row;
+    justify-content:center
 }
-
+.row:nth-child(2n){
+    background-color: rgb(160, 209, 252);
+}
 .name {
-    width: 50%;
+    
     text-align: right;
     margin-right: 0.2rem;
 }
 
 .text {
-    width: 50%;
+    
     margin-left: 0.2rem;
 }
 .title{
