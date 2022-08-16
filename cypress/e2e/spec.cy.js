@@ -55,5 +55,11 @@ describe('Site app', () => {
     cy.contains(name).parent().contains('Eliminar').click()
     cy.contains('SI').click() 
   })
+  it('check about me Linkedin',()=>{
+    cy.get('div[id="aboutMeLink"]').click()
+  })
+  it('check about me github',()=>{
+    cy.get('div[id="aboutMeGit"]').click()
+  })
 
 })
